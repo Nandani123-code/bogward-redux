@@ -1,5 +1,6 @@
 import "./App.css";
 import Counter from "./Components/Counter/Counter";
+import Theory from "./Components/Todo/Theory";
 import Todo from "./Components/Todo/Todo";
 
 function App() {
@@ -33,18 +34,19 @@ function App() {
 
   const list = ["shreyash", "nandani", "vijaya", "vaishanvi", "dipika"];
 
-  console.log(list);
+  // console.log(list);
 
-  const newList = list.filter((item) => { 
+  const newList = list.filter((item) => {
     return item !== "vijaya";
   });
 
-  console.log(newList);
+  // console.log(newList);
 
   return (
     <div>
       {/* <Counter /> */}
-      <Todo />
+      {/* <Todo /> */}
+      <Theory />
     </div>
   );
 }
