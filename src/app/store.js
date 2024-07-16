@@ -1,18 +1,23 @@
 // state, actions , reducers
-
-import { createStore } from "redux";
+import createSagaMiddleware from "redux-saga";
+import { applyMiddleware, createStore } from "redux";
+import rootSaga from "./sagas";
 
 // state - object
 const initialState = {
   count: 0,
   name: "SHREYASH",
   arr: ["Depika", "Vijaya"],
+  sagaCounter: 0,
+  myArr: [],
 };
 
 //actions - function
 export function increment() {
   return { type: "INCREMENT" };
 }
+
+const sagaMiddleware = createSagaMiddleware();
 
 export const decrement = () => ({ type: "DECREMENT" });
 
@@ -25,6 +30,13 @@ export const removeFromList = (paylaod) => ({
   paylaod,
 });
 
+export const incrementSaga = () => ({
+  type: "INCREMENT_ASYNC",
+});
+
+export const fetchData = () => ({
+  type: "FETCHDATA",
+});
 // Reducer - function, this has 2 paramater
 function myReducer(state = initialState, action) {
   switch (action.type) {
@@ -60,9 +72,23 @@ function myReducer(state = initialState, action) {
         }),
       };
 
+    case "INCREMENTSAGA":
+      return {
+        ...state,
+        sagaCounter: state.sagaCounter + 1,
+      };
+
+    case "FETCHED_DATA":
+      return {
+        ...state,
+        myArr: action.payload,
+      };
+
     default:
       return state;
   }
 }
 
-export const store = createStore(myReducer);
+export const store = createStore(myReducer, applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(rootSaga);

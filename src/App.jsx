@@ -44,9 +44,9 @@ function App() {
 
   return (
     <div>
-      {/* <Counter /> */}
+      <Counter />
       {/* <Todo /> */}
-      <Theory />
+      {/* <Theory /> */}
     </div>
   );
 }
