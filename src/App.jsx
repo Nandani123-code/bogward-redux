@@ -1,4 +1,5 @@
 import "./App.css";
+import Nandani from "./Components/Activity/Nandani";
 import Counter from "./Components/Counter/Counter";
 import Theory from "./Components/Todo/Theory";
 import Todo from "./Components/Todo/Todo";
@@ -44,9 +45,10 @@ function App() {
 
   return (
     <div>
-      <Counter />
+      {/* <Counter /> */}
       {/* <Todo /> */}
       {/* <Theory /> */}
+      <Nandani/>
     </div>
   );
 }

@@ -28,10 +28,24 @@ function* fetchData() {
   }
 }
 
+function* newFetchData() {
+  try {
+    const response = yield call(axios.get, "https://bogward.onrender.com/all");
+    console.log(response.data);
+    yield put({ type: "NEW_FETCHED_DATA", payload: response.data });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function* watchNewFetchData() {
+  yield takeEvery("NEWFETCHDATA", newFetchData);
+}
+
 function* watchFetchData() {
   yield takeEvery("FETCHDATA", fetchData);
 }
 
 export default function* rootSaga() {
-  yield all([helloSaga(), watchIncrementAsync(), watchFetchData()]);
+  yield all([helloSaga(), watchIncrementAsync(), watchFetchData(),watchNewFetchData()]);
 }

@@ -43,6 +43,7 @@ function Counter() {
           <p key={elem._id}>{elem.name}</p>
         ))}
       </div>
+
     </div>
   );
 }

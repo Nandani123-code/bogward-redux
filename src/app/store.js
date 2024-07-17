@@ -20,6 +20,7 @@ export function increment() {
 
 const sagaMiddleware = createSagaMiddleware();
 
+export const newFetchData=()=>({type:"NEWFETCHDATA"})
 export const decrement = () => ({ type: "DECREMENT" });
 
 export const changeName = () => ({ type: "CHANGENAMEF" });
@@ -58,6 +59,13 @@ function myReducer(state = initialState, action) {
         ...state,
         name: "DIPIKA",
       };
+
+      case "NEW_FETCHED_DATA":
+        console.log(action)
+        return{
+          ...state,
+          nandaniArr:action.payload
+        }
 
     case "ADDTOLIST":
       return {
