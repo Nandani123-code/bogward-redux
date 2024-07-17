@@ -10,6 +10,7 @@ const initialState = {
   arr: ["Depika", "Vijaya"],
   sagaCounter: 0,
   myArr: [],
+  nandaniArr: [],
 };
 
 //actions - function
